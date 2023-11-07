@@ -1,7 +1,20 @@
 import { createContext, useEffect, useState } from "react";
 import { PRODUCTS } from "../products";
 
+
 export const ShopContext = createContext(null);
+
+fetch('data.json')
+  .then(response => response.json())
+  .then(data => {
+    localStorage.setItem('apiData', JSON.stringify(data));
+  });
+
+// To retrieve the data later
+const apiData = JSON.parse(localStorage.getItem('apiData'));
+console.log(apiData);
+
+
 
 const getDefaultCart = () => {
   let cart = {};
