@@ -1,20 +1,31 @@
-import React from "react";
-import { PRODUCTS } from "../../products";
-import { Product } from "./product";
+import React,  { useEffect, useState }  from "react";
+import Search from "../../Search";
+import ProductList from "./ProductList";
 import "./shop.css";
 
 export const Shop = () => {
+  const [product, addProducts] = useState([])
+  const [descr, updateDescription] = useState("")
+
+  const onSearchChange = (value) => {
+    updateDescription(value)
+  }
+
+  useEffect(() => {
+    fetch(`http://localhost:3001/products?q=${descr}`)
+    .then(res => res.json())
+    .then(data =>
+      addProducts(data)
+    )
+  }, [descr])
+
   return (
     <div className="shop">
       <div className="shopTitle">
         <h1>General Store</h1>
       </div>
-
-      <div className="products">
-        {PRODUCTS.map((product) => (
-          <Product data={product} />
-        ))}
-      </div>
+      <Search onSearchChange={onSearchChange}/>
+      <ProductList products={product}/>
     </div>
   );
 };
