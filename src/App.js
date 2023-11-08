@@ -6,13 +6,27 @@ import { Contact } from "./pages/contact";
 import { Cart } from "./pages/cart/cart";
 import { ShopContextProvider } from "./context/shop-context";
 import { Checkout } from "./pages/checkout";
+import React, { useState, useEffect } from 'react';
+import './darkMode.css';
 
 function App() {
+  const [theme, setTheme] = useState('light');
+  const toggleTheme = () => {
+    if (theme === 'light') {
+      setTheme('dark');
+    } else {
+      setTheme('light');
+    }
+  };
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
   return (
-    <div className="App">
+    <div className={`App ${theme}`}>
       <ShopContextProvider>
         <Router>
           <Navbar />
+          <button onClick={toggleTheme}>Toggle Theme</button>
           <Routes>
             <Route path="/" element={<Shop />} />
             <Route path="/contact" element={<Contact />} />
