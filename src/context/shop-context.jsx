@@ -41,6 +41,9 @@ export const ShopContextProvider = (props) => {
   const checkout = () => {
     setCartItems(getDefaultCart());
   };
+  const deleteCart = () => {
+    setCartItems(getDefaultCart());
+  };
 
   const contextValue = {
     cartItems,
@@ -49,6 +52,7 @@ export const ShopContextProvider = (props) => {
     removeFromCart,
     getTotalCartAmount,
     checkout,
+    deleteCart,
   };
 
   return (

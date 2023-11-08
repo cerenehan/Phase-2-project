@@ -22,7 +22,7 @@ export const Shop = () => {
   return (
     <div className="shop">
       <div className="shopTitle">
-        <h1>General Store</h1>
+       <h1>Virtual Treasures</h1>
       </div>
       <Search onSearchChange={onSearchChange}/>
       <ProductList products={product}/>
