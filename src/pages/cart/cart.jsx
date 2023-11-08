@@ -10,7 +10,6 @@ import "./cart.css";
 export const Cart = ({productList}) => {
   const { cartItems, getTotalCartAmount, checkout, deleteCart } = useContext(ShopContext);
   const totalAmount = getTotalCartAmount();
-  const [gifVisible, setGifVisible] = useState(false);
 
   const navigate = useNavigate();
 
