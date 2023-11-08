@@ -22,33 +22,16 @@ function App() {
     document.body.className = theme;
   }, [theme]);
 
-
-  const [product, addProducts] = useState([])
-  const [title, updateTitle] = useState("")
-
-  const onSearchChange = (value) => {
-    updateTitle(value)
-  }
-
-  useEffect(() => {
-    fetch(`http://localhost:3001/products?q=${title}`)
-    .then(res => res.json())
-    .then(data =>
-      addProducts(data)
-    )
-  }, [title])
-
-
   return (
     <div className={`App ${theme}`}>
-      <ShopContextProvider PRODUCTS={product}>
+      <ShopContextProvider>
         <Router>
-        <Navbar onSearchChange={onSearchChange}/>
+        <Navbar />
         <button onClick={toggleTheme}>Toggle Theme</button>
           <Routes>
-            <Route path="/" element={<Shop products={product}/>} />
+            <Route path="/" element={<Shop/>} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/cart" element={<Cart productList={product}/>} />
+            <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<Checkout />} />
           </Routes>
         </Router>

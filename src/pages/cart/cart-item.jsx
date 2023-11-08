@@ -2,21 +2,28 @@ import React, { useContext } from "react";
 import { ShopContext } from "../../context/shop-context";
 
 export const CartItem = (props) => {
-  const { id, title, price, image } = props.data;
-  const { cartItems, addToCart, removeFromCart, updateCartItemCount } = useContext(ShopContext);
+  const { id, quantity} = props.data;
+  const { addToCart, removeFromCart, updateCartItemCount, products, getTotalCartAmount } = useContext(ShopContext);
+  const product = products.find(p => p.id === id)
+
+  const total = product.price*quantity
+
+  const handleClick = () => {
+    if (quantity > 0) {removeFromCart(id)}
+  }
 
   return (
     <div className="cartItem">
-      <img src={image} />
+      <img src={product.image} />
       <div className="description">
         <p>
-          <b>{title}</b>
+          <b>{product.title}</b>
         </p>
-        <p> Price: ${price}</p>
+        <p> Price: ${total.toFixed(2)}</p>
         <div className="countHandler">
-          <button onClick={() => removeFromCart(id)}> - </button>
+          <button onClick={handleClick}> - </button>
           <input
-            value={cartItems[id]}
+            value = {quantity}
             onChange={(e) => updateCartItemCount(Number(e.target.value), id)}
           />
           <button onClick={() => addToCart(id)}> + </button>

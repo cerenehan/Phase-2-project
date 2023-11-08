@@ -3,7 +3,7 @@ import { ShopContext } from "../../context/shop-context";
 
 export const Product = ({product}) => {
   const { addToCart, cartItems } = useContext(ShopContext);
-  const cartItemCount = cartItems[product.id];
+  const cartItem = cartItems.find(cartItem => cartItem.id === product.id)
 
   return (
     <div className="product">
@@ -15,7 +15,7 @@ export const Product = ({product}) => {
         <p> ${product.price}</p>
       </div>
       <button className="addToCartBttn" onClick={() => addToCart(product.id)}>
-        Add To Cart {cartItemCount > 0 && <> ({cartItemCount})</>}
+        Add To Cart {cartItem ? cartItem.quantity : null}
       </button>
     </div>
   );

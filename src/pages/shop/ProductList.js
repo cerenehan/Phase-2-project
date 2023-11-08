@@ -1,8 +1,11 @@
 import React from "react";
 import { Product } from "./product";
+import { useShopContext } from "../../context/shop-context";
 
-function ProductList({products}) {
-  const itemData = products.map(product => {
+function ProductList() {
+  const {products} = useShopContext()
+
+  const itemData = products?.map(product => {
       return <Product key={product.id} product={product} />
     });
 
