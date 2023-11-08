@@ -1,17 +1,17 @@
 import React, { useContext, useState } from "react";
 import { ShopContext } from "../../context/shop-context";
-import { PRODUCTS } from "../../products";
+// import { PRODUCTS } from "../../products";
 import { CartItem } from "./cart-item";
 import { useNavigate } from "react-router-dom";
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 
 import "./cart.css";
-export const Cart = () => {
+export const Cart = ({productList}) => {
   const { cartItems, getTotalCartAmount, checkout, deleteCart } = useContext(ShopContext);
   const totalAmount = getTotalCartAmount();
   const [gifVisible, setGifVisible] = useState(false);
-  
+
   const navigate = useNavigate();
 
   return (
@@ -20,8 +20,9 @@ export const Cart = () => {
         <h1>Your Cart Items</h1>
       </div>
       <div className="cart">
-        {PRODUCTS.map((product) => {
+        {productList.map((product) => {
           if (cartItems[product.id] !== 0) {
+            console.log(cartItems)
             return <CartItem data={product} />;
           }
         })}

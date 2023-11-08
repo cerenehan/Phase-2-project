@@ -1,15 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ShoppingCart } from "phosphor-react";
+import Search from "./Search";
 import "./navbar.css";
 
-export const Navbar = () => {
+export const Navbar = ({onSearchChange}) => {
   return (
     <div className="navbar">
       <div className="links">
-        <Link to="/"> Shop </Link>
-        <Link to="/contact"> Contact </Link>
-        <Link to="/cart">
+        <Search id="nav-search" onSearchChange={onSearchChange} />
+        <Link id="nav-shop" to="/" > Shop </Link>
+        <Link id="nav-contact" to="/contact"> Contact </Link>
+        <Link id="nav-cart" to="/cart">
           <ShoppingCart size={32} />
         </Link>
       </div>
