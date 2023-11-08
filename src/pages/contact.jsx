@@ -22,11 +22,12 @@ export const Contact = () => {
           <p>Connect with us on Facebook to stay in the loop.</p>
         </div>
 
-        <div className="contact-item">
-          <i className="fa fa-envelope"></i>
-          <a href="mailto:Virtualtreasures@VT.com">Email: Virtualtreasures@VT.com</a>
-          <p>Email us anytime for assistance or inquiries.</p>
-        </div>
+      <div className="contact-item">
+        <a href="mailto:Virtualtreasures@VT.com">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRs58YGw8yNQraiPID31EEx2P0Xh-lsDijf0gk4BwfcQ5Y4z6gHGVkezrYi8x6nDWb83uA&usqp=CAU" width="128" height="128" alt="Email" />
+        </a>
+        <p>Email us anytime for assistance or inquiries.</p>
+      </div>
 
         <div className="contact-item">
           <i className="fa fa-phone"></i>
