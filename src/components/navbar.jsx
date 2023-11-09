@@ -4,11 +4,11 @@ import { ShoppingCart } from "phosphor-react";
 import Search from "./Search";
 import "./navbar.css";
 
-export const Navbar = ({onSearchChange}) => {
+export const Navbar = () => {
   return (
     <div className="navbar">
       <div className="links">
-        <Search id="nav-search" onSearchChange={onSearchChange} />
+        <Search id="nav-search" />
         <Link id="nav-shop" to="/" > Shop </Link>
         <Link id="nav-contact" to="/contact"> Contact </Link>
         <Link id="nav-cart" to="/cart">

@@ -7,26 +7,30 @@ export const ShopContextProvider = ({children}) => {
 
   const [products, setProducts] = useState([])
   const [cartItems, setCartItems] = useState([]);
+  const [searchedProducts, setSearchResults] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:3001/products")
     .then(res => res.json())
-    .then(data =>
+    .then(data => {
       setProducts(data)
-    )
+      return data
+    })
+    .then(data => {
+      setSearchResults(data)
+    })
   }, [])
 
+    const getTotalCartAmount = () => {
+      const cartProducts = cartItems.map(cartItem => {
+        return cartItem = {product:products.find(p => p.id === cartItem.id), quantity:cartItem.quantity}
+      })
 
-  const getTotalCartAmount = () => {
-    const cartProducts = cartItems.map(cartItem => {
-      return cartItem = {product:products.find(p => p.id === cartItem.id), quantity:cartItem.quantity}
-    })
+      const cartPrices = cartProducts.map(item => item.product.price * item.quantity)
+      const totalAmount = cartPrices.reduce((n, price) => n + price, 0)
 
-    const cartPrices = cartProducts.map(item => item.product.price * item.quantity)
-    const totalAmount = cartPrices.reduce((n, price) => n + price, 0)
-
-    return totalAmount.toFixed(2)
-  };
+      return totalAmount.toFixed(2)
+    };
 
   const addToCart = (itemId) => {
     const currentCartItemIndex = cartItems.findIndex((cartItem) => cartItem.id === itemId )
@@ -70,6 +74,8 @@ export const ShopContextProvider = ({children}) => {
   const contextValue = {
     cartItems,
     products,
+    searchedProducts,
+    setSearchResults,
     addToCart,
     updateCartItemCount,
     removeFromCart,
