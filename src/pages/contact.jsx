@@ -32,7 +32,7 @@ export const Contact = () => {
         <div className="contact-item">
           <i className="fa fa-phone"></i>
           <p>Call or text us:</p>
-          <p>Phone: +123-456-7890</p>
+          <p>Phone: +248-434-5508</p>
           <p>Our customer support is available during business hours.</p>
         </div>
       </div>
