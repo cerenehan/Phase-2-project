@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from '@mui/material/Link';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -7,59 +7,34 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Title from './Title';
 
-// Generate Order Data
-function createData(id, date, name, shipTo, paymentMethod, amount) {
-  return { id, date, name, shipTo, paymentMethod, amount };
-}
-
-const rows = [
-  createData(
-    0,
-    '16 Mar, 2019',
-    'Elvis Presley',
-    'Tupelo, MS',
-    'VISA ⠀•••• 3719',
-    312.44,
-  ),
-  createData(
-    1,
-    '16 Mar, 2019',
-    'Paul McCartney',
-    'London, UK',
-    'VISA ⠀•••• 2574',
-    866.99,
-  ),
-  createData(
-    2, 
-    '16 Mar, 2019', 
-    'Tom Scholz', 
-    'Boston, MA', 
-    'MC ⠀•••• 1253', 
-    100.81,
-    ),
-  createData(
-    3,
-    '16 Mar, 2019',
-    'Michael Jackson',
-    'Gary, IN',
-    'AMEX ⠀•••• 2000',
-    654.39,
-  ),
-  createData(
-    4,
-    '15 Mar, 2019',
-    'Bruce Springsteen',
-    'Long Branch, NJ',
-    'VISA ⠀•••• 5919',
-    212.79,
-  ),
-];
-
-function preventDefault(event) {
-  event.preventDefault();
-}
-
 function Orders() {
+  const [allRows, setAllRows] = useState([]); // Store all rows
+  const [visibleRows, setVisibleRows] = useState(5); // Number of rows to display initially
+  const [additionalRows, setAdditionalRows] = useState(10); // Number of rows to load when "See more" is clicked
+
+  useEffect(() => {
+    // Fetch and read data from the API endpoint
+    fetch('http://localhost:3002/data')
+      .then((response) => response.json())
+      .then((data) => {
+        // Modify the data to combine city and state
+        const modifiedData = data.map(item => {
+          const combinedLocation = `${item["Ship TO City"]}, ${item["Ship To State"]}`;
+          return {
+            ...item,
+            "Ship TO Location": combinedLocation,
+          };
+        });
+        setAllRows(modifiedData);
+      })
+      .catch((error) => console.error('Error loading data', error));
+  }, []);
+
+  function preventDefault(event) {
+    event.preventDefault();
+    setVisibleRows(visibleRows + additionalRows); // Load more rows when "See more" is clicked
+  }
+
   return (
     <React.Fragment>
       <Title>Recent Orders</Title>
@@ -68,27 +43,30 @@ function Orders() {
           <TableRow>
             <TableCell>Date</TableCell>
             <TableCell>Name</TableCell>
-            <TableCell>Ship To</TableCell>
+            <TableCell>Ship TO</TableCell>
             <TableCell>Payment Method</TableCell>
             <TableCell align="right">Sale Amount</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.id}>
-              <TableCell>{row.date}</TableCell>
-              <TableCell>{row.name}</TableCell>
-              <TableCell>{row.shipTo}</TableCell>
-              <TableCell>{row.paymentMethod}</TableCell>
-              <TableCell align="right">{`$${row.amount}`}</TableCell>
+          {allRows.slice(0, visibleRows).map((row, index) => (
+            <TableRow key={index}>
+              <TableCell>{row.Date}</TableCell>
+              <TableCell>{row.Name}</TableCell>
+              <TableCell>{row['Ship TO Location']}</TableCell>
+              <TableCell>{row['Payment Method']}</TableCell>
+              <TableCell align="right">{row['Sale Amount']}</TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
-      <Link color="primary" href="#" onClick={preventDefault} sx={{ mt: 3 }}>
-        See more orders
-      </Link>
+      {visibleRows < allRows.length && (
+        <Link color="primary" href="#" onClick={preventDefault} sx={{ mt: 3 }}>
+          See more orders
+        </Link>
+      )}
     </React.Fragment>
   );
 }
+
 export default Orders;
