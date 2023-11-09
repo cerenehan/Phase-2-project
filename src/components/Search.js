@@ -1,6 +1,6 @@
 import React from "react";
 
-function Search({onSearchChange}) {
+function Search({onSearchChange, inputStyles}) {
     const handleSearchChange = (e) => {
         onSearchChange(e.target.value)
     }
@@ -11,6 +11,7 @@ function Search({onSearchChange}) {
             type="text"
             placeholder="Search"
             onChange={handleSearchChange}
+            style={inputStyles}
         />
         <i className="circular search link icon"></i>
     </div>

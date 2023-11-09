@@ -4,18 +4,33 @@
   background-color: rgb(19, 19, 19);
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 0 20px;
 }
 
 .links {
-  margin-right: 50px;
   display: flex;
   align-items: center;
+  flex: 1; 
+  justify-content: center; 
 }
 
 .links a {
   text-decoration: none;
   color: white;
+  margin: 0 20px;
   margin-left: 20px;
   font-size: 25px;
+}
+
+.right-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-right: 100px;
+}
+.right-buttons button {
+  margin: 5px 0;
+  width: 150px; /* Fixed width for both buttons */
+  height: 25px; 
 }
