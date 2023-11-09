@@ -5,10 +5,10 @@ import Search from "./Search";
 import "./navbar.css";
 
 const searchInputStyles = {
-  width: '300px',       // Adjust the width
-  height: '20px',       // Adjust the height
-  fontSize: '18px',     // Adjust the font size
-  padding: '10px',      // Adjust the padding
+  width: '300px',       
+  height: '20px',       
+  fontSize: '18px',   
+  padding: '10px',      
 };
 
 export const Navbar = ({ toggleTheme, onSearchChange}) => {

@@ -8,16 +8,14 @@ import TableRow from '@mui/material/TableRow';
 import Title from './Title';
 
 function Orders() {
-  const [allRows, setAllRows] = useState([]); // Store all rows
-  const [visibleRows, setVisibleRows] = useState(5); // Number of rows to display initially
-  const [additionalRows, setAdditionalRows] = useState(10); // Number of rows to load when "See more" is clicked
+  const [allRows, setAllRows] = useState([]);
+  const [visibleRows, setVisibleRows] = useState(5); 
+  const [additionalRows, setAdditionalRows] = useState(10); 
 
   useEffect(() => {
-    // Fetch and read data from the API endpoint
     fetch('http://localhost:3002/data')
       .then((response) => response.json())
       .then((data) => {
-        // Modify the data to combine city and state
         const modifiedData = data.map(item => {
           const combinedLocation = `${item["Ship TO City"]}, ${item["Ship To State"]}`;
           return {
@@ -25,6 +23,7 @@ function Orders() {
             "Ship TO Location": combinedLocation,
           };
         });
+        modifiedData.sort((a, b) => new Date(b.Date) - new Date(a.Date));
         setAllRows(modifiedData);
       })
       .catch((error) => console.error('Error loading data', error));
@@ -32,7 +31,7 @@ function Orders() {
 
   function preventDefault(event) {
     event.preventDefault();
-    setVisibleRows(visibleRows + additionalRows); // Load more rows when "See more" is clicked
+    setVisibleRows(visibleRows + additionalRows);
   }
 
   return (

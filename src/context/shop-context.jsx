@@ -45,7 +45,6 @@ export const ShopContextProvider = ({children}) => {
   const removeFromCart = (itemId) => {
     const currentCartItemIndex = cartItems.findIndex((cartItem) => cartItem.id === itemId )
     if (cartItems[currentCartItemIndex].quantity === 1) {
-      const updateCartItem = {...cartItems[currentCartItemIndex], quantity: 0}
       const newCart = cartItems.filter(item => item !== cartItems[currentCartItemIndex])
       setCartItems(newCart);
       return
