@@ -1,9 +1,7 @@
-import React, {useState} from "react";
+import React from "react";
 import { useShopContext } from "../context/shop-context";
-import SearchIcon from '@mui/icons-material/Search';
-import TextField from '@mui/material/TextField';
 
-function Search() {
+function Search({inputStyles}) {
     let searchedProducts
     const {products, setSearchResults} = useShopContext()
 
@@ -13,14 +11,14 @@ function Search() {
     }
 
     return (
-    <div className = "searchContainer">
-        <div className = "searchText">
-            <input
-                type="text"
-                placeholder="Search"
-                onChange={handleSearchChange}
-            />
-        </div>
+        <div className="ui large fluid icon input">
+        <input
+            type="text"
+            placeholder="Search"
+            onChange={handleSearchChange}
+            style={inputStyles}
+        />
+        <i className="circular search link icon"></i>
     </div>
 );
 }
