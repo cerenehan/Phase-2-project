@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 
+
+
 import "./cart.css";
 export const Cart = () => {
   const { cartItems, getTotalCartAmount, checkout, deleteCart } = useContext(ShopContext);
