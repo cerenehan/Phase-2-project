@@ -21,6 +21,8 @@ import { mainListItems, secondaryListItems } from './listItems';
 import Chart from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
+import HomeIcon from '@mui/icons-material/Home';
+import { Link as ReactLink } from 'react-router-dom';
 
 function Copyright(props) {
     return (
@@ -81,7 +83,6 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-// TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
  function Dashboard() {
@@ -97,7 +98,8 @@ const defaultTheme = createTheme();
         <AppBar position="absolute" open={open}>
           <Toolbar
             sx={{
-              pr: '24px', // keep right padding when drawer closed
+              pr: '24px',
+              padding: '20px',
             }}
           >
             <IconButton
@@ -119,8 +121,14 @@ const defaultTheme = createTheme();
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              Dashboard
+           Admin Panel
             </Typography>
+            <ReactLink to="/">
+              <IconButton color="inherit">
+                
+                <HomeIcon />
+              </IconButton>
+            </ReactLink>
             <IconButton color="inherit">
               <Badge badgeContent={4} color="secondary">
                 <NotificationsIcon />
