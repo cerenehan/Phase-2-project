@@ -12,6 +12,7 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Link as ReactLink } from "react-router-dom";
 
 function Copyright(props) {
   return (
@@ -31,14 +32,14 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 function SignInSide() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+//   const handleSubmit = (event) => {
+//     event.preventDefault();
+//     const data = new FormData(event.currentTarget);
+//     console.log({
+//       email: data.get('email'),
+//       password: data.get('password'),
+//     });
+//   };
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -74,7 +75,7 @@ function SignInSide() {
             <Typography component="h1" variant="h5">
                Admin Login
             </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            <Box component="form" noValidate  sx={{ mt: 1 }}>
               <TextField
                 margin="normal"
                 required
@@ -99,14 +100,16 @@ function SignInSide() {
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"
               />
+               <ReactLink to="/dashboard">
               <Button
-                type="submit"
+                type="click"
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
                 LOGIN
               </Button>
+              </ReactLink>
               <Grid container>
              
               </Grid>

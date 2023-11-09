@@ -8,7 +8,7 @@ import { Cart } from "./pages/cart/cart";
 import { ShopContextProvider } from "./context/shop-context";
 import { Checkout } from "./pages/checkout";
 import SignInSide from "./components/SignInSide";
-
+import Dashboard from "./pages/AdminPanel/Dashboard";
 
 function App() {
   const [theme, setTheme] = useState('light');
@@ -34,11 +34,20 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/admin" element={<SignInSide />} />
+            <Route path="/dashboard/*" element={<DashboardLayout />} />
           </Routes>
         </Router>
       </ShopContextProvider>
     </div>
   );
 }
-
+function DashboardLayout() {
+  return (
+    <div>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+      </Routes>
+    </div>
+  );
+}
 export default App;
