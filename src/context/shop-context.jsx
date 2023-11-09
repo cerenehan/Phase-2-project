@@ -8,7 +8,7 @@ export const ShopContextProvider = ({children}) => {
   const [products, setProducts] = useState([])
   const [cartItems, setCartItems] = useState([]);
   const [searchedProducts, setSearchResults] = useState([]);
-
+  const [completedOrders, setCompletedOrders] = useState([]);
   useEffect(() => {
     fetch("http://localhost:3001/products")
     .then(res => res.json())
