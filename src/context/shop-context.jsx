@@ -8,7 +8,10 @@ export const ShopContextProvider = ({children}) => {
   const [products, setProducts] = useState([])
   const [cartItems, setCartItems] = useState([]);
   const [searchedProducts, setSearchResults] = useState([]);
+  const [searchResults, setResultsList] = useState([]);
   const [completedOrders, setCompletedOrders] = useState([]);
+  const [buttonPosition, setButtonPosition] = useState({ top: 0, left: 0 });
+
   useEffect(() => {
     fetch("http://localhost:3001/products")
     .then(res => res.json())
@@ -74,6 +77,8 @@ export const ShopContextProvider = ({children}) => {
     cartItems,
     products,
     searchedProducts,
+    searchResults,
+    setResultsList,
     setSearchResults,
     addToCart,
     updateCartItemCount,
@@ -81,6 +86,8 @@ export const ShopContextProvider = ({children}) => {
     getTotalCartAmount,
     checkout,
     deleteCart,
+    buttonPosition,
+    setButtonPosition,
   };
 
   return (
