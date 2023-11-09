@@ -14,7 +14,7 @@ import Typography from '@mui/material/Typography';
 import AddressForm from './AddressForm';
 import PaymentForm from './PaymentForm';
 import Review from './Review';
-
+import { useShopContext } from '../../context/shop-context';
 let x = Math.round(Math.random() * 1000000);
 
 function Copyright() {
@@ -48,10 +48,14 @@ function getStepContent(step) {
 export default function ExtraCheckout() {
   const [activeStep, setActiveStep] = React.useState(0);
 
-  const handleNext = () => {
+  const { deleteCart } = useShopContext();
+
+   const handleNext = () => {
+    if (activeStep === steps.length - 1) {
+      deleteCart();
+    }
     setActiveStep(activeStep + 1);
   };
-
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };

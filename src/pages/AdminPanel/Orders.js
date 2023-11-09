@@ -17,10 +17,14 @@ function Orders() {
       .then((response) => response.json())
       .then((data) => {
         const modifiedData = data.map(item => {
-          const combinedLocation = `${item["Ship TO City"]}, ${item["Ship To State"]}`;
+          const city = item["Ship TO City"] || '';
+          const state = item["Ship to State"] || '';
+          const combinedLocation = `${city}, ${state}`;
+          const last4Digits = item["Credit Card Number"].slice(-4);
           return {
             ...item,
             "Ship TO Location": combinedLocation,
+            "Payment Method": `${item["Payment Method"]} ***${last4Digits}`,
           };
         });
         modifiedData.sort((a, b) => new Date(b.Date) - new Date(a.Date));
