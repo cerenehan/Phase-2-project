@@ -12,7 +12,7 @@ export const Product = ({product}) => {
         <p>
           <b>{product.title}</b>
         </p>
-        <p> ${product.price.toFixed(2)}</p>
+        <p> ${product.price}</p>
       </div>
       <button className="addToCartBttn" onClick={() => addToCart(product.id)}>
         Add To Cart {cartItem ? cartItem.quantity : null}

@@ -9,6 +9,7 @@ import { ShopContextProvider } from "./context/shop-context";
 import { Checkout } from "./pages/checkout";
 import SignInSide from "./components/SignInSide";
 import Dashboard from "./pages/AdminPanel/Dashboard";
+import DashboardAddNewItem from './pages/AdminPanel/DashboardAddNewItem';
 
 function App() {
   const [theme, setTheme] = useState('light');
@@ -35,6 +36,7 @@ function App() {
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/admin" element={<SignInSide />} />
             <Route path="/dashboard/*" element={<DashboardLayout />} />
+            <Route path="/dashboard/AddNewItem" element={<DashboardAddNewItem />} />
           </Routes>
         </Router>
       </ShopContextProvider>
