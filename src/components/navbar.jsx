@@ -2,7 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ShoppingCart } from "phosphor-react";
 import Search from "./Search";
+import SearchResultsList from "./SearchResultsList";
 import "./navbar.css";
+import "./search.css";
 
 const searchInputStyles = {
   width: '300px',
@@ -15,7 +17,10 @@ export const Navbar = ({toggleTheme}) => {
   return (
     <div className="navbar">
       <div className="links">
-        <Search id="nav-search" inputStyles={searchInputStyles} />
+        <div className="search-container">
+          <Search id="nav-search" inputStyles={searchInputStyles} />
+          <SearchResultsList />
+        </div>
         <Link id="nav-shop" to="/" > Shop </Link>
         <Link id="nav-contact" to="/contact"> Contact </Link>
         <Link id="nav-cart" to="/cart">
