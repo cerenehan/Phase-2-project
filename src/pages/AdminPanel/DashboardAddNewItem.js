@@ -24,6 +24,7 @@ import Orders from './Orders';
 import HomeIcon from '@mui/icons-material/Home';
 import { Link as ReactLink } from 'react-router-dom';
 import AddNewItem from './AddNewItem';
+import { Add } from '@mui/icons-material';
 
 
 function Copyright(props) {
@@ -87,7 +88,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 const defaultTheme = createTheme();
 
- function Dashboard() {
+ function DashboardAddNewItem() {
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
@@ -171,42 +172,9 @@ const defaultTheme = createTheme();
           }}
         >
           <Toolbar />
+          <AddNewItem />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-            <Grid container spacing={3}>
-              {/* Chart */}
-              <Grid item xs={12} md={8} lg={9}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 240,
-                  }}
-                >
-                  
-                  <Chart />
-                </Paper>
-              </Grid>
-              {/* Recent Deposits */}
-              <Grid item xs={12} md={4} lg={3}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 240,
-                  }}
-                >
-                  <Deposits />
-                </Paper>
-              </Grid>
-              {/* Recent Orders */}
-              <Grid item xs={12}>
-                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                  <Orders />
-                </Paper>
-              </Grid>
-            </Grid>
+            
             <Copyright sx={{ pt: 4 }} />
           </Container>
         </Box>
@@ -214,4 +182,4 @@ const defaultTheme = createTheme();
     </ThemeProvider>
   );
 }
-export default Dashboard;
+export default DashboardAddNewItem;
