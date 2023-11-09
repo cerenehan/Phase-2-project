@@ -3,9 +3,9 @@ import { Product } from "./product";
 import { useShopContext } from "../../context/shop-context";
 
 function ProductList() {
-  const {products} = useShopContext()
+  const {searchedProducts} = useShopContext()
 
-  const itemData = products?.map(product => {
+    const itemData = searchedProducts?.map(product => {
       return <Product key={product.id} product={product} />
     });
 

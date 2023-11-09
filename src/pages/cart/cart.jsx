@@ -6,6 +6,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import ConfettiExplosion from 'react-confetti-explosion';
 
+
+
 import "./cart.css";
 
 export const Cart = () => {
@@ -68,7 +70,6 @@ export const Cart = () => {
           <button onClick={() => navigate("/")}> Continue Shopping </button>
           <button
             onClick={() => {
-              checkout();
               navigate("/checkout");
             }}
           >
