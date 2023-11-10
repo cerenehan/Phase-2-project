@@ -6,6 +6,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `npm i concurrently`
+
+You may need to install Concurrently before use.
+
 ### `npm run start-all`
 
 ***Using concurrently***
