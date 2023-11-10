@@ -1,36 +1,34 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import AddchartIcon from '@mui/icons-material/Addchart';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import { useShopContext } from '../../context/shop-context';
 
 const defaultTheme = createTheme();
 
 function AddNewItem() {
+  const { addNewItemAndRefreshProducts } = useShopContext();
+  const [formData, setFormData] = useState({
+    title: "",
+    price: "",
+    category: "",
+    image: "",
+  });
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      title: data.get('title'),
-      price: data.get('price'),
-      category: data.get('category'),
-      image: data.get('image'),
-    });
+    
     const newItem = {
-      title: data.get('title'),
-      price: data.get('price'),
-      category: data.get('category'),
-      image: data.get('image'),
+      title: formData.title,
+      price: formData.price,
+      category: formData.category,
+      image: formData.image,
     };
 
     fetch('http://localhost:3001/products', {
@@ -42,6 +40,12 @@ function AddNewItem() {
     })
       .then((response) => {
         if (response.ok) {
+          setFormData({
+            title: "",
+            price: "",
+            category: "",
+            image: "",
+          });
           return response.json();
         } else {
           throw new Error('Failed to add the new item');
@@ -49,6 +53,8 @@ function AddNewItem() {
       })
       .then((data) => {
         console.log('Successfully added the new item:', data);
+       addNewItemAndRefreshProducts(newItem);
+        
       })
       .catch((error) => {
         console.error('Error while adding the new item:', error);
@@ -82,6 +88,8 @@ function AddNewItem() {
               label="Title"
               name="title"
               autoFocus
+              value={formData.title}
+              onChange={(e) => setFormData({ ...formData, title: e.target.value })}
             />
             <TextField
               margin="normal"
@@ -90,6 +98,8 @@ function AddNewItem() {
               name="price"
               label="Price"
               id="price"
+              value={formData.price}
+              onChange={(e) => setFormData({ ...formData, price: e.target.value })}
             />
             <TextField
               margin="normal"
@@ -98,6 +108,8 @@ function AddNewItem() {
               name="category"
               label="Category"
               id="category"
+              value={formData.category}
+              onChange={(e) => setFormData({ ...formData, category: e.target.value })}
             />
               <TextField
               margin="normal"
@@ -106,6 +118,8 @@ function AddNewItem() {
               name="image"
               label="Image URL"
               id="image"
+              value={formData.image}
+              onChange={(e) => setFormData({ ...formData, image: e.target.value })}
             />
             
             <Button

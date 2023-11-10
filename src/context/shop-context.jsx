@@ -9,21 +9,26 @@ export const ShopContextProvider = ({children}) => {
   const [cartItems, setCartItems] = useState([]);
   const [searchedProducts, setSearchResults] = useState([]);
   const [searchResults, setResultsList] = useState([]);
-  const [completedOrders, setCompletedOrders] = useState([]);
   const [buttonPosition, setButtonPosition] = useState({ top: 0, left: 0 });
 
-  useEffect(() => {
-    fetch("http://localhost:3001/products")
-    .then(res => res.json())
-    .then(data => {
-      setProducts(data)
-      return data
-    })
-    .then(data => {
-      setSearchResults(data)
-    })
-  }, [])
+  
 
+  const fetchProducts = () => {
+    fetch("http://localhost:3001/products")
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data);
+        setSearchResults(data);
+      });
+  };
+  useEffect(() => {
+    fetchProducts();
+  }, []); 
+
+  const addNewItemAndRefreshProducts = () => {
+    console.log("Successfully rerendered products.")
+    fetchProducts();
+  }
     const getTotalCartAmount = () => {
       const cartProducts = cartItems.map(cartItem => {
         return cartItem = {product:products.find(p => p.id === cartItem.id), quantity:cartItem.quantity}
@@ -74,6 +79,7 @@ export const ShopContextProvider = ({children}) => {
   };
 
   const contextValue = {
+    fetchProducts,
     cartItems,
     products,
     searchedProducts,
@@ -88,6 +94,7 @@ export const ShopContextProvider = ({children}) => {
     deleteCart,
     buttonPosition,
     setButtonPosition,
+    addNewItemAndRefreshProducts,
   };
 
   return (
