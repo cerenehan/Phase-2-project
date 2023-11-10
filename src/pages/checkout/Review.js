@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { ShopContext } from "../../context/shop-context";
 import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';

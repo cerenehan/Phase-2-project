@@ -7,7 +7,7 @@ export const Product = ({product}) => {
 
   return (
     <div className="product">
-      <img src={product.image} />
+      <img src={product.image} alt={product.title}/>
       <div className="description">
         <p>
           <b>{product.title}</b>

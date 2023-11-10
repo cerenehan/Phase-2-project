@@ -1,4 +1,3 @@
-import React, {useState} from 'react'
 import { useShopContext } from "../context/shop-context";
 
 

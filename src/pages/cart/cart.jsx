@@ -4,7 +4,7 @@ import { CartItem } from "./cart-item";
 import { useNavigate } from "react-router-dom";
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
-import ConfettiExplosion from 'react-confetti-explosion';
+import Confetti from 'react-confetti-boom';
 
 
 
@@ -14,9 +14,7 @@ export const Cart = () => {
   const {
     cartItems,
     getTotalCartAmount,
-    checkout,
     deleteCart,
-    buttonPosition,
     setButtonPosition,
   } = useContext(ShopContext);
   const totalAmount = getTotalCartAmount();
@@ -32,18 +30,12 @@ export const Cart = () => {
     }
   }, [setButtonPosition]);
 
-  const explosionColors = [
-    '#FF5733',
-    '#FF0000',
-    '#FFD700',
-    '#B22222',
-  ];
 
   const handleDeleteCart = () => {
     setIsExploding(true);
     setTimeout(() => {
       deleteCart();
-    }, 3000);
+    }, 10);
   };
 
   return (
@@ -58,43 +50,31 @@ export const Cart = () => {
       </div>
 
       {totalAmount > 0 ? (
-        <div className="checkout">
-          <p> Subtotal: ${totalAmount} </p>
-          <IconButton
-            id="delete-button"
-            aria-label="delete"
-            onClick={handleDeleteCart}
-          >
-            <DeleteIcon />
-          </IconButton>
-          <button onClick={() => navigate("/")}> Continue Shopping </button>
-          <button
-            onClick={() => {
-              navigate("/checkout");
-            }}
-          >
-            {" "}
-            Checkout{" "}
-          </button>
-        </div>
-      ) : (
-        <h1> Your Shopping Cart is Empty</h1>
-      )}
-
+  <div className="checkout">
+    <p>Subtotal: ${totalAmount}</p>
+    <IconButton id="delete-button" aria-label="delete" onClick={handleDeleteCart}>
+      <DeleteIcon />
+    </IconButton>
+    <button onClick={() => navigate("/")}>Continue Shopping</button>
+    <button onClick={() => navigate("/checkout")}>Checkout</button>
+  </div>
+) : (
+  <div>
+    <h1 style={{ textAlign: 'center' }}>Your Shopping Cart is Empty</h1>
+    <img src="https://i.imgur.com/VsOAVWG.png" alt="Empty Shopping Cart with Man" />
+  </div>
+)}
       {isExploding && (
-        <ConfettiExplosion
-          colors={explosionColors}
-          particleCount={700}
-          width={500}
-          height={500}
-          force={0.9}
-          duration={3000}
-          particalSize={4}
-          style={{
-            position: 'absolute',
-            top: buttonPosition.top + 'px',
-            left: buttonPosition.left + 'px',
-          }}
+        <Confetti
+        mode='boom'
+        colors={["#33160f", "#b22222", "#ff7a00", "#f1c609", "#FFF347", "#FDFFA5"]}
+        deg={270}
+        particleCount={500}
+        shapeSize={3.2528002417761357}
+        shapeDeg={16.174975694309733}
+        spreadDeg={11}
+        launchSpeed={2.2}
+        
         />
       )}
     </div>

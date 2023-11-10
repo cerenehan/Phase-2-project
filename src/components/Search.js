@@ -1,6 +1,5 @@
 import React from "react";
 import { useShopContext } from "../context/shop-context";
-import SearchIcon from '@mui/icons-material/Search';
 
 
 function Search({inputStyles}) {

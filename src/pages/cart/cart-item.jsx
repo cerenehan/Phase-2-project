@@ -3,7 +3,7 @@ import { ShopContext } from "../../context/shop-context";
 
 export const CartItem = (props) => {
   const { id, quantity} = props.data;
-  const { addToCart, removeFromCart, updateCartItemCount, products, getTotalCartAmount } = useContext(ShopContext);
+  const { addToCart, removeFromCart, updateCartItemCount, products} = useContext(ShopContext);
   const product = products.find(p => p.id === id)
   const total = product.price*quantity
 
@@ -13,7 +13,7 @@ export const CartItem = (props) => {
 
   return (
     <div className="cartItem">
-      <img src={product.image} />
+      <img src={product.image} alt={product.title}/>
       <div className="description">
         <p>
           <b>{product.title}</b>

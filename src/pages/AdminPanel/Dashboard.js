@@ -23,7 +23,6 @@ import Deposits from './Deposits';
 import Orders from './Orders';
 import HomeIcon from '@mui/icons-material/Home';
 import { Link as ReactLink } from 'react-router-dom';
-import AddNewItem from './AddNewItem';
 
 
 function Copyright(props) {
