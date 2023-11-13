@@ -239,6 +239,13 @@
         "rate": 3.6,
         "count": 145
       }
+    },
+    {
+      "title": "test",
+      "price": "test",
+      "category": "test",
+      "image": "test",
+      "id": 21
     }
   ]
 }

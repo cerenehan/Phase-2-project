@@ -69,10 +69,10 @@ export const Cart = () => {
         mode='boom'
         colors={["#33160f", "#b22222", "#ff7a00", "#f1c609", "#FFF347", "#FDFFA5"]}
         deg={270}
-        particleCount={500}
+        particleCount={800}
         shapeSize={3.2528002417761357}
         shapeDeg={16.174975694309733}
-        spreadDeg={11}
+        spreadDeg={20}
         launchSpeed={2.2}
         
         />
