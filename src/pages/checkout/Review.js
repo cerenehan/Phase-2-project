@@ -17,7 +17,7 @@ const payments = [
   { name: 'Expiry date', detail: '04/2024' },
 ];
 
-function Review() {
+function Review({ addressData }) {
   const { cartItems, getTotalCartAmount } = useContext(ShopContext);
   const totalAmount = getTotalCartAmount();
   return (
@@ -46,8 +46,10 @@ function Review() {
           <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
             Shipping
           </Typography>
-          <Typography gutterBottom>John Smith</Typography>
-          <Typography gutterBottom>{addresses.join(', ')}</Typography>
+          <Typography gutterBottom>{addressData.firstName} {addressData.lastName}</Typography>
+          <Typography gutterBottom>
+            {addressData.address1}, {addressData.address2}, {addressData.city}, {addressData.state}, {addressData.zip}, {addressData.country}
+          </Typography>
         </Grid>
         <Grid item container direction="column" xs={12} sm={6}>
           <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
