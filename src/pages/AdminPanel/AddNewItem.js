@@ -7,12 +7,11 @@ import Box from '@mui/material/Box';
 import AddchartIcon from '@mui/icons-material/Addchart';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useShopContext } from '../../context/shop-context';
+import Paper from '@mui/material/Paper';
 
-const defaultTheme = createTheme();
 
-function AddNewItem() {
+function AddNewItem({theme}) {
   const { addNewItemAndRefreshProducts } = useShopContext();
   const [formData, setFormData] = useState({
     title: "",
@@ -62,7 +61,7 @@ function AddNewItem() {
   };
 
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <Paper className={`addNewItem-page ${theme === 'dark' ? 'dark-theme' : 'light-theme'}`}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -133,7 +132,7 @@ function AddNewItem() {
           </Box>
         </Box>
       </Container>
-    </ThemeProvider>
+    </Paper>
   );
 }
 export default AddNewItem;

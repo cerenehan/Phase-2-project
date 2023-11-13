@@ -5,12 +5,12 @@ import { useNavigate } from "react-router-dom";
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import Confetti from 'react-confetti-boom';
-
+import { Paper } from "@mui/material";
 
 
 import "./cart.css";
 
-export const Cart = () => {
+export const Cart = ({ theme }) => {
   const {
     cartItems,
     getTotalCartAmount,
@@ -39,6 +39,7 @@ export const Cart = () => {
   };
 
   return (
+    <Paper className={`cart-page ${theme === 'dark' ? 'dark-theme' : 'light-theme'}`}>
     <div className="cart">
       <div>
         <h1>Your Cart Items</h1>
@@ -61,7 +62,7 @@ export const Cart = () => {
 ) : (
   <div>
     <h1 style={{ textAlign: 'center' }}>Your Shopping Cart is Empty</h1>
-    <img src="https://i.imgur.com/VsOAVWG.png" alt="Empty Shopping Cart with Man" />
+    <img src="https://i.imgur.com/Sgi0Rfs.png" alt="Empty Shopping Cart with Man" />
   </div>
 )}
       {isExploding && (
@@ -78,5 +79,6 @@ export const Cart = () => {
         />
       )}
     </div>
+    </Paper>
   );
 };

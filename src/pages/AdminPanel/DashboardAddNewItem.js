@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiDrawer from '@mui/material/Drawer';
 import Box from '@mui/material/Box';
@@ -9,7 +9,6 @@ import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import Badge from '@mui/material/Badge';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -19,6 +18,8 @@ import { mainListItems, secondaryListItems } from './listItems';
 import HomeIcon from '@mui/icons-material/Home';
 import { Link as ReactLink } from 'react-router-dom';
 import AddNewItem from './AddNewItem';
+import Paper from '@mui/material/Paper';
+import Brightness4OutlinedIcon from '@mui/icons-material/Brightness4Outlined';
 
 
 function Copyright(props) {
@@ -80,16 +81,15 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-const defaultTheme = createTheme();
 
- function DashboardAddNewItem() {
+ function DashboardAddNewItem({theme, toggleTheme}) {
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
   };
 
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <Paper className={`dashboardNewItem-page ${theme === 'dark' ? 'dark-theme' : 'light-theme'}`}>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
         <AppBar position="absolute" open={open}>
@@ -127,7 +127,10 @@ const defaultTheme = createTheme();
               </IconButton>
             </ReactLink>
             <IconButton color="inherit">
-                <NotificationsIcon />
+              <NotificationsIcon />
+            </IconButton>
+            <IconButton color="inherit">
+              <Brightness4OutlinedIcon onClick={toggleTheme}/>
             </IconButton>
           </Toolbar>
         </AppBar>
@@ -171,7 +174,7 @@ const defaultTheme = createTheme();
           </Container>
         </Box>
       </Box>
-    </ThemeProvider>
+    </Paper>
   );
 }
 export default DashboardAddNewItem;

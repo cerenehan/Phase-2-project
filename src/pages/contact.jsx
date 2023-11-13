@@ -1,8 +1,10 @@
 import React from "react";
 import "./contact.css";
+import { Paper } from '@mui/material';
 
-export const Contact = () => {
+export const Contact = ({ theme }) => {
   return (
+    <Paper className={`contact-page ${theme === 'dark' ? 'dark-theme' : 'light-theme'}`}>
     <div className="contact-page">
       <h1>Contact Us</h1>
       <p>We are here to assist you with any questions or concerns you may have. Please don't hesitate to reach out to us using the following contact methods:</p>
@@ -38,5 +40,6 @@ export const Contact = () => {
       </div>
       <p>We value your feedback and are committed to providing excellent customer service. Thank you for shopping with us!</p>
     </div>
+    </Paper>
   );
 };

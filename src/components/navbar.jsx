@@ -5,6 +5,9 @@ import Search from "./Search";
 import SearchResultsList from "./SearchResultsList";
 import "./navbar.css";
 import "./search.css";
+import IconButton from '@mui/material/IconButton';
+import Brightness4OutlinedIcon from '@mui/icons-material/Brightness4Outlined';
+import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettingsOutlined';
 
 const searchInputStyles = {
   width: '300px',
@@ -13,7 +16,8 @@ const searchInputStyles = {
   padding: '10px',
 };
 
-export const Navbar = ({toggleTheme}) => {
+export const Navbar = ({ theme, toggleTheme }) => {
+  const isDarkMode = theme === "dark";
   return (
     <div className="navbar">
       <div className="links">
@@ -23,13 +27,20 @@ export const Navbar = ({toggleTheme}) => {
         </div>
         <Link id="nav-shop" to="/" > Shop </Link>
         <Link id="nav-contact" to="/contact"> Contact </Link>
-        <Link id="nav-cart" to="/cart">
-          <ShoppingCart size={32} />
+        <Link id="nav-cart" to="/cart" >
+          <ShoppingCart size={32} /> 
         </Link>
       </div>
       <div className="right-buttons">
-        <button onClick={toggleTheme}>Toggle Theme</button>
-        <Link to="/admin"><button>Admin Login</button></Link>
+        <IconButton color="inherit" title="Toggle Theme" onClick={toggleTheme}>
+          <Brightness4OutlinedIcon />
+          {isDarkMode ? "Light Mode" : "Dark Mode"}
+        </IconButton>
+        <Link to="/admin">
+          <IconButton title="Admin Panel">
+            <AdminPanelSettingsOutlinedIcon />Admin Panel
+          </IconButton>
+        </Link>
       </div>
     </div>
   );

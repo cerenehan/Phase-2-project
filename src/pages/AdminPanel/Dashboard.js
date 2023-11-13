@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiDrawer from '@mui/material/Drawer';
 import Box from '@mui/material/Box';
@@ -23,7 +23,7 @@ import Deposits from './Deposits';
 import Orders from './Orders';
 import HomeIcon from '@mui/icons-material/Home';
 import { Link as ReactLink } from 'react-router-dom';
-
+import Brightness4OutlinedIcon from '@mui/icons-material/Brightness4Outlined';
 
 function Copyright(props) {
     return (
@@ -84,16 +84,14 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-const defaultTheme = createTheme();
-
- function Dashboard() {
+ function Dashboard({theme, toggleTheme}) {
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
   };
 
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <Paper className={`dashboard-page ${theme === 'dark' ? 'dark-theme' : 'light-theme'}`}>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
         <AppBar position="absolute" open={open}>
@@ -125,16 +123,16 @@ const defaultTheme = createTheme();
            Admin Panel
             </Typography>
             <ReactLink to="/">
-              <IconButton color="inherit">
-                
+              <IconButton color="inherit"> 
                 <HomeIcon />
               </IconButton>
             </ReactLink>
-            <IconButton color="inherit">
-              
-                <NotificationsIcon />
-          
-            </IconButton>
+              <IconButton color="inherit">
+                  <NotificationsIcon />
+              </IconButton>
+              <IconButton color="inherit">
+                <Brightness4OutlinedIcon onClick={toggleTheme}/>
+              </IconButton>
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>
@@ -210,7 +208,7 @@ const defaultTheme = createTheme();
           </Container>
         </Box>
       </Box>
-    </ThemeProvider>
+    </Paper>
   );
 }
 export default Dashboard;

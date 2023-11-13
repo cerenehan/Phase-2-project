@@ -30,7 +30,6 @@
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 5px;
-  background-color: #f9f9f9;
 }
 
 .contact-item a {
@@ -48,7 +47,6 @@
 
 .contact-item p {
   font-size: 14px;
-  color: #444;
 }
 
 .contact-footer {
