@@ -599,15 +599,6 @@
       "Payment Method": "americanexpress",
       "Sale Amount": "$1951.94",
       "Credit Card Number": "560222695606672659"
-    },
-    {
-      "Date": "2023-11-13",
-      "Name": "Bob Tester",
-      "Ship TO City": "Atlanta",
-      "Ship to State": "GA",
-      "Sale Amount": "$78.34",
-      "Credit Card Number": "2398467239486432879432",
-      "id": 61
     }
   ]
 }

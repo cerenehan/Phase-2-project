@@ -11,7 +11,6 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link as ReactLink } from "react-router-dom";
 
 function Copyright(props) {
@@ -29,20 +28,12 @@ function Copyright(props) {
 
 
 
-const defaultTheme = createTheme();
 
-function SignInSide() {
-//   const handleSubmit = (event) => {
-//     event.preventDefault();
-//     const data = new FormData(event.currentTarget);
-//     console.log({
-//       email: data.get('email'),
-//       password: data.get('password'),
-//     });
-//   };
+
+function SignInSide( {theme} ) {
 
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <Paper className={`signIn-page ${theme === 'dark' ? 'dark-theme' : 'light-theme'}`}>
       <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
         <Grid
@@ -118,7 +109,7 @@ function SignInSide() {
           </Box>
         </Grid>
       </Grid>
-    </ThemeProvider>
+    </Paper>
   );
 }
 export default SignInSide;

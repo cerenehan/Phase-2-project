@@ -46,7 +46,7 @@
   cursor: pointer;
 }
 
-this is my cart.css file .cart {
+.cart {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -69,12 +69,12 @@ this is my cart.css file .cart {
   height: 200px;
   object-fit: cover; 
   border-radius: 10px;
-  padding-right: 20px;
+  margin: 20px;
 }
 
 .cartItem .description {
   width: 100%;
-  font-size: 30px;
+  font-size: 20px;
 }
 
 .countHandler input {
@@ -86,7 +86,6 @@ this is my cart.css file .cart {
 .checkout button {
   width: 150px;
   height: 50px;
-  background-color: rgb(19, 19, 19);
   color: white;
   border: none;
   border-radius: 8px;
