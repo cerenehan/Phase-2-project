@@ -10,7 +10,7 @@ export const Contact = () => {
       <div className="contact-info">
         <div className="contact-item">
           <a href="https://www.instagram.com/your_instagram_username" target="_blank" rel="noopener noreferrer">
-            <img src="https://i0.wp.com/motion-lab-sudio.com/wp-content/uploads/2020/04/35-355558_vi-logo-instagram-format-png.jpg?resize=150%2C150&ssl=1" alt="Instagram" />
+            <img src="https://i.pinimg.com/originals/dc/70/7c/dc707c0e2e4a1883d4ebb81d107aec9a.png" alt="Instagram" />
           </a>
           <p>Follow us on Instagram for the latest updates and promotions.</p>
         </div>
@@ -24,7 +24,7 @@ export const Contact = () => {
 
       <div className="contact-item">
         <a href="mailto:Virtualtreasures@VT.com">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRs58YGw8yNQraiPID31EEx2P0Xh-lsDijf0gk4BwfcQ5Y4z6gHGVkezrYi8x6nDWb83uA&usqp=CAU" width="128" height="128" alt="Email" />
+        <img src="https://purepng.com/public/uploads/large/purepng.com-mail-iconsymbolsiconsapple-iosiosios-8-iconsios-8-721522596075clftr.png" width="128" height="128" alt="Email" />
         </a>
         <p>Email us anytime for assistance or inquiries.</p>
       </div>
