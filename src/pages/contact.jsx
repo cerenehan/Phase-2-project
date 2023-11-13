@@ -12,7 +12,7 @@ export const Contact = ({ theme }) => {
       <div className="contact-info">
         <div className="contact-item">
           <a href="https://www.instagram.com/your_instagram_username" target="_blank" rel="noopener noreferrer">
-            <img src="https://i.pinimg.com/originals/dc/70/7c/dc707c0e2e4a1883d4ebb81d107aec9a.png" alt="Instagram" />
+            <img src="https://i.imgur.com/Unzp0LM.png" alt="Instagram" />
           </a>
           <p>Follow us on Instagram for the latest updates and promotions.</p>
         </div>
