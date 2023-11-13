@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { ShopContext } from "../../context/shop-context";
 import CssBaseline from '@mui/material/CssBaseline';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -32,9 +33,17 @@ function Copyright() {
 
 const steps = ['Shipping address', 'Payment details', 'Review your order'];
 
-
 export default function ExtraCheckout() {
+  const [orderPlaced, setOrderPlaced] = useState(false);
   const [activeStep, setActiveStep] = React.useState(0);
+  const { cartItems, getTotalCartAmount } = useContext(ShopContext);
+  const totalAmount = getTotalCartAmount();
+  const [paymentData, setPaymentData] = useState({
+    cardName: "",
+    cardNumber: "",
+    expDate: "",
+    cvv: "",
+  });
   const [addressData, setAddressData] = useState({
     firstName: "",
     lastName: "",
@@ -49,12 +58,49 @@ export default function ExtraCheckout() {
   const handleAddressDataChange = (newAddressData) => {
     setAddressData(newAddressData);
   };
+  const handlePaymentDataChange = (newPaymentData) => {
+    setPaymentData(newPaymentData);
+  };
 
   const { deleteCart } = useShopContext();
-
-   const handleNext = () => {
+  const [formData, setFormData] = useState({
+    Date: "",
+    Name: "",
+    "Ship TO City": "",
+    'Ship to State': "",
+    'Payment Method': "", 
+    'Sale Amount': "",
+    'Credit Card Number': "",
+  });
+    const newItem = {
+      Date: new Date().toISOString().slice(0, 10), 
+      Name: `${addressData.firstName} ${addressData.lastName}`,
+      'Ship TO City': addressData.city,
+      'Ship to State': addressData.state,
+      'Payment Method': addressData.cardType, 
+      'Sale Amount': `$${totalAmount}`,
+      'Credit Card Number': paymentData.cardNumber,
+    };
+  const handleNext = async () => {
     if (activeStep === steps.length - 1) {
-      deleteCart();
+      try {
+        const response = await fetch('http://localhost:3002/data', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(newItem),
+        });
+  
+        if (response.ok) {
+          setOrderPlaced(true);
+          deleteCart();
+        } else {
+          console.log('Error while adding the new order:');
+        }
+      } catch (error) {
+        console.log('Error while adding the new order:', error);
+      }
     }
     setActiveStep(activeStep + 1);
   };
@@ -70,9 +116,11 @@ export default function ExtraCheckout() {
           onAddressDataChange={handleAddressDataChange}
         />;
       case 1:
-        return <PaymentForm />;
+        return <PaymentForm
+          paymentData={paymentData}
+          onPaymentDataChange={handlePaymentDataChange} />;
       case 2:
-        return <Review addressData={addressData} />;
+        return <Review addressData={addressData} paymentData={paymentData} />;
       default:
         throw new Error('Unknown step');
     }

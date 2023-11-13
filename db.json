@@ -239,13 +239,6 @@
         "rate": 3.6,
         "count": 145
       }
-    },
-    {
-      "title": "cat",
-      "price": "cat",
-      "category": "cat",
-      "image": "cat",
-      "id": 21
     }
   ]
 }
