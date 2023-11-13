@@ -12,7 +12,7 @@ function Search({inputStyles}) {
             return
         }
 
-        const searchedProducts = products.filter(p => p.description.toLowerCase().includes(e.target.value.toLowerCase()) || p.title.toLowerCase().includes(e.target.value.toLowerCase()) || p.category.toLowerCase().includes(e.target.value.toLowerCase()))
+        const searchedProducts = products.filter(p => p.title.toLowerCase().includes(e.target.value.toLowerCase()) || p.category.toLowerCase().includes(e.target.value.toLowerCase()))
         setSearchResults(searchedProducts)
         setResultsList(searchedProducts)
     }
