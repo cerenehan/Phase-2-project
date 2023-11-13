@@ -23,7 +23,7 @@ export const Navbar = ({ theme, toggleTheme }) => {
       <div className="links">
         <div className="search-container">
           <Search id="nav-search" inputStyles={searchInputStyles} />
-          <SearchResultsList />
+          <SearchResultsList theme={theme} />
         </div>
         <Link id="nav-shop" to="/" > Shop </Link>
         <Link id="nav-contact" to="/contact"> Contact </Link>

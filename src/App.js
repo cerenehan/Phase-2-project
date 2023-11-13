@@ -10,6 +10,7 @@ import { Checkout } from './pages/checkout';
 import SignInSide from './components/SignInSide';
 import Dashboard from './pages/AdminPanel/Dashboard';
 import DashboardAddNewItem from './pages/AdminPanel/DashboardAddNewItem';
+import Search from './components/Search';
 
 const lightTheme = createTheme();
 const darkTheme = createTheme({
@@ -51,6 +52,7 @@ function App() {
                 path="/dashboard/AddNewItem" 
                 element={<DashboardAddNewItem theme={theme} toggleTheme={toggleTheme} />}
               />
+              <Route path="/search" element={<Search theme={theme} />} /> 
             </Routes>
           </Router>
         </ShopContextProvider>
