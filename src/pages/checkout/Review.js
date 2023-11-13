@@ -9,17 +9,23 @@ import { ReviewItem } from './Review-Item';
 import "./review.css";
 
 
-const addresses = ['1 MUI Drive', 'Reactville', 'Anytown', '99999', 'USA'];
-const payments = [
-  { name: 'Card type', detail: 'Visa' },
-  { name: 'Card holder', detail: 'Mr John Smith' },
-  { name: 'Card number', detail: 'xxxx-xxxx-xxxx-1234' },
-  { name: 'Expiry date', detail: '04/2024' },
-];
 
 function Review({ addressData }) {
   const { cartItems, getTotalCartAmount } = useContext(ShopContext);
   const totalAmount = getTotalCartAmount();
+  const cardTypes = ["Visa", "MasterCard", "American Express", "China UnionPay"];
+  const randomIndex = Math.floor(Math.random() * cardTypes.length);
+  const randomCardType = cardTypes[randomIndex];
+  const randomLast4Digits = Math.floor(1000 + Math.random() * 9000);
+  const randomMonth = Math.floor(1 + Math.random() * 12);
+  const randomYear = Math.floor(2024 + Math.random() * 6); 
+
+  const payments = [
+    { name: 'Card type', detail: randomCardType },
+    { name: 'Card holder', detail: `${addressData.firstName} ${addressData.lastName}` },
+    { name: 'Card number', detail: `xxxx-xxxx-xxxx-${randomLast4Digits}` }, 
+    { name: 'Expiry date', detail: `${randomMonth.toString().padStart(2, '0')}/${randomYear}` },
+];
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -33,7 +39,6 @@ function Review({ addressData }) {
             
             <Typography variant="body2">{ReviewItem.price}</Typography>
           </ListItem>
-      
         <ListItem sx={{ py: 1, px: 0 }}>
           <ListItemText primary="Total" />
           <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
