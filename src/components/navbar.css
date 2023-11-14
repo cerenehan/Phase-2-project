@@ -33,7 +33,7 @@
 }
 .right-buttons button {
   margin: 5px 0;
-  width: 25px; /* Fixed width for both buttons */
+  width: 25px; 
   height: 25px;
   color: white; 
   font-size: 12px;

@@ -1,37 +1,85 @@
 /* For light theme */
-.results-list.light-theme {
+.results-list.light-theme,
+.light-theme .search-results { /* Targeting .search-results directly for light theme */
     background-color: white;
-  }
-  
-  /* For dark theme */
-  .results-list.dark-theme {
+}
+
+/* For dark theme */
+.results-list.dark-theme,
+.dark-theme .search-results { /* Targeting .search-results directly for dark theme */
     background-color: black;
-  }
-  
-  .searchBar-container {
-    width: 100%;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    margin-top: 1.0rem;
-  }
-  
-  input {
-    height: 100%;
-  }
-  
-  #search-icon {
+    color: white; /* Text color for dark theme */
+}
+
+/* Specific rule for search-results in dark theme */
+.results-list.dark-theme .search-results {
+  background-color: black; /* Change background to black for dark theme */
+}
+
+/* Search bar container styles */
+.searchBar-container {
+  position: relative; 
+  width: 100%;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  z-index: 10;
+}
+
+/* Input field styles */
+input[type="text"] {
+  width: 100%;
+  padding: 10px; 
+  border: 1px solid #ddd;
+  border-radius: 10px; 
+  font-size: 1rem;
+}
+
+/* Search icon styles */
+#search-icon {
+  color: white;
+  align-items: center;
+}
+
+/* General search results container styles */
+.search-results {
+  width: 300px;
+  position: absolute;
+  transform: translateX(910px) translateY(-1260px);
+  top: 100%; 
+  left: 0;
+  background-color: white; /* Default background color for light theme */
+  box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+  overflow-y: auto;
+  max-height: 145px; 
+  border-radius: 0 0 10px 10px;
+  z-index: 5; 
+}
+
+/* Search result item styles */
+.search-result-item {
+  padding: 10px;
+  border-bottom: 1px solid #ddd; 
+  cursor: pointer; 
+}
+
+/* Hover effect for search result item */
+.search-result-item:hover {
+  background-color: #f9f9f9; /* Hover background color for both themes */
+  color: black; /* Text color on hover for readability */
+}
+
+/* Light theme search result item */
+.results-list.light-theme .search-result-item,
+.light-theme .search-result-item { /* Direct targeting for light theme */
+    color: black;
+}
+
+/* Dark theme search result item */
+.results-list.dark-theme .search-result-item,
+.dark-theme .search-result-item { /* Direct targeting for dark theme */
     color: white;
-    align-items: center;
-  }
-  
-  .results-list {
-    width: 325px;
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0px 0px 8px #ddd;
-    max-height: 200px;
-    overflow-y: scroll;
-  }
-  
+}
+
+/* Other styles, if any, can be added below */

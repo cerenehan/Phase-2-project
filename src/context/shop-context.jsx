@@ -4,8 +4,7 @@ export const ShopContext = createContext({});
 export const ShopContextProvider = ({children}) => {
   const [products, setProducts] = useState([])
   const [cartItems, setCartItems] = useState([]);
-  const [searchedProducts, setSearchResults] = useState([]);
-  const [searchResults, setResultsList] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
   const [buttonPosition, setButtonPosition] = useState({ top: 0, left: 0 });
 
   const fetchProducts = () => {
@@ -76,9 +75,7 @@ export const ShopContextProvider = ({children}) => {
     fetchProducts,
     cartItems,
     products,
-    searchedProducts,
     searchResults,
-    setResultsList,
     setSearchResults,
     addToCart,
     updateCartItemCount,

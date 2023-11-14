@@ -1,17 +1,20 @@
 import React from "react";
+import { useShopContext } from "../../context/shop-context"; // Adjust the path as needed
 import { Product } from "./product";
-import { useShopContext } from "../../context/shop-context";
 
 function ProductList() {
-  const {searchedProducts} = useShopContext()
+  const { searchResults, products } = useShopContext();
 
-    const itemData = searchedProducts?.map(product => {
-      return <Product key={product.id} product={product} />
-    });
+  // Use searchResults if available, otherwise fallback to all products
+  const productsToDisplay = searchResults.length > 0 ? searchResults : products;
 
-    return (
-      <div className="products">{itemData}</div>
-    );
-  }
+  return (
+    <div className="products">
+      {productsToDisplay.map(product => (
+        <Product key={product.id} product={product} />
+      ))}
+    </div>
+  );
+}
 
 export default ProductList;

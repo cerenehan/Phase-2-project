@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ShoppingCart } from "phosphor-react";
 import Search from "./Search";
-import SearchResultsList from "./SearchResultsList";
 import "./navbar.css";
 import "./search.css";
 import IconButton from '@mui/material/IconButton';
@@ -23,7 +22,6 @@ export const Navbar = ({ theme, toggleTheme }) => {
       <div className="links">
         <div className="search-container">
           <Search id="nav-search" inputStyles={searchInputStyles} />
-          <SearchResultsList theme={theme} />
         </div>
         <Link id="nav-shop" to="/" > Shop </Link>
         <Link id="nav-contact" to="/contact"> Contact </Link>
