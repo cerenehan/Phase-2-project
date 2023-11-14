@@ -3,14 +3,12 @@ import { useShopContext } from "../context/shop-context";
 
 function Search({ inputStyles }) { 
   const { products, setSearchResults, setResultsList } = useShopContext();
-
   const handleSearchChange = (e) => {
     if (!e.target.value) {
       setSearchResults(products);
       setResultsList([]);
       return;
     }
-
     const searchedProducts = products.filter(
       (p) =>
         p.title.toLowerCase().includes(e.target.value.toLowerCase()) ||
@@ -19,7 +17,6 @@ function Search({ inputStyles }) {
     setSearchResults(searchedProducts);
     setResultsList(searchedProducts);
   };
-
   return (
     <div className="searchBar-container">
       <input

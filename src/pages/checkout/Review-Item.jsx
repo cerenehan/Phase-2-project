@@ -5,9 +5,7 @@ export const ReviewItem = (props) => {
   const { id, quantity} = props.data;
   const { products } = useContext(ShopContext);
   const product = products.find(p => p.id === id)
-
   const total = product.price*quantity
-
   return (
     <div className="reviewItem">
       <img src={product.image} alt={product.title} />

@@ -21,7 +21,6 @@ import AddNewItem from './AddNewItem';
 import Paper from '@mui/material/Paper';
 import Brightness4OutlinedIcon from '@mui/icons-material/Brightness4Outlined';
 
-
 function Copyright(props) {
     return (
       <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -81,13 +80,11 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-
  function DashboardAddNewItem({theme, toggleTheme}) {
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
   };
-
   return (
     <Paper className={`dashboardNewItem-page ${theme === 'dark' ? 'dark-theme' : 'light-theme'}`}>
       <Box sx={{ display: 'flex' }}>
@@ -122,7 +119,6 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
             </Typography>
             <ReactLink to="/">
               <IconButton color="inherit">
-                
                 <HomeIcon />
               </IconButton>
             </ReactLink>

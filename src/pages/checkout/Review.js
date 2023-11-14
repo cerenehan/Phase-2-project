@@ -8,8 +8,6 @@ import Grid from '@mui/material/Grid';
 import { ReviewItem } from './Review-Item';
 import "./review.css";
 
-
-
 function Review({ addressData, paymentData }) {
   const last4Digits = paymentData.cardNumber.slice(-4);
   const { cartItems, getTotalCartAmount } = useContext(ShopContext);
@@ -34,7 +32,6 @@ function Review({ addressData, paymentData }) {
                 return <ReviewItem data={cartItem} key={cartItem.id}/>;
           })}
           <ListItem key={ReviewItem.name} sx={{ py: 1, px: 0 }}>
-            
             <Typography variant="body2">{ReviewItem.price}</Typography>
           </ListItem>
         <ListItem sx={{ py: 1, px: 0 }}>

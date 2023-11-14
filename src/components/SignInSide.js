@@ -21,17 +21,10 @@ function Copyright(props) {
       Virtual Treasures
       </Link>{' '}
       {new Date().getFullYear()}
-    
     </Typography>
   );
 }
-
-
-
-
-
 function SignInSide( {theme} ) {
-
   return (
     <Paper className={`signIn-page ${theme === 'dark' ? 'dark-theme' : 'light-theme'}`}>
       <Grid container component="main" sx={{ height: '100vh' }}>
@@ -58,8 +51,7 @@ function SignInSide( {theme} ) {
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-            }}
-          >
+            }}>
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
               <LockOutlinedIcon />
             </Avatar>
@@ -96,13 +88,11 @@ function SignInSide( {theme} ) {
                 type="click"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-              >
+                sx={{ mt: 3, mb: 2 }}>
                 LOGIN
               </Button>
               </ReactLink>
               <Grid container>
-             
               </Grid>
               <Copyright sx={{ mt: 5 }} />
             </Box>

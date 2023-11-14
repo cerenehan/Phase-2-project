@@ -10,7 +10,6 @@ import Container from '@mui/material/Container';
 import { useShopContext } from '../../context/shop-context';
 import Paper from '@mui/material/Paper';
 
-
 function AddNewItem({theme}) {
   const { addNewItemAndRefreshProducts } = useShopContext();
   const [formData, setFormData] = useState({
@@ -22,7 +21,6 @@ function AddNewItem({theme}) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    
     const newItem = {
       title: formData.title,
       price: formData.price,
@@ -70,8 +68,7 @@ function AddNewItem({theme}) {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-          }}
-        >
+          }}>
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <AddchartIcon />
           </Avatar>

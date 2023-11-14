@@ -1,9 +1,8 @@
 import React from "react";
 import { useShopContext } from "../context/shop-context";
 
-function SearchResultsList({ theme }) { // Accept the theme prop
+function SearchResultsList({ theme }) {
   const { searchResults } = useShopContext();
-
   return (
     <div className={`results-list ${theme === 'light' ? 'light-theme' : 'dark-theme'}`}>
       {searchResults.map((p) => {
@@ -12,5 +11,4 @@ function SearchResultsList({ theme }) { // Accept the theme prop
     </div>
   );
 }
-
 export default SearchResultsList;

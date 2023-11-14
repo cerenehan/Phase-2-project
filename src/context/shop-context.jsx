@@ -1,18 +1,13 @@
 import { createContext, useEffect, useState, useContext } from "react";
-
 export const ShopContext = createContext({});
 
-
 export const ShopContextProvider = ({children}) => {
-
   const [products, setProducts] = useState([])
   const [cartItems, setCartItems] = useState([]);
   const [searchedProducts, setSearchResults] = useState([]);
   const [searchResults, setResultsList] = useState([]);
   const [buttonPosition, setButtonPosition] = useState({ top: 0, left: 0 });
 
-  
- 
   const fetchProducts = () => {
     fetch("http://localhost:3001/products")
       .then((res) => res.json())
@@ -33,13 +28,11 @@ export const ShopContextProvider = ({children}) => {
       const cartProducts = cartItems.map(cartItem => {
         return cartItem = {product:products.find(p => p.id === cartItem.id), quantity:cartItem.quantity}
       })
-
       const cartPrices = cartProducts.map(item => item.product.price * item.quantity)
       const totalAmount = cartPrices.reduce((n, price) => n + price, 0)
 
       return totalAmount.toFixed(2)
     };
-
   const addToCart = (itemId) => {
     const currentCartItemIndex = cartItems.findIndex((cartItem) => cartItem.id === itemId )
     if (currentCartItemIndex === -1) {
@@ -74,6 +67,7 @@ export const ShopContextProvider = ({children}) => {
   const checkout = () => {
     setCartItems([]);
   };
+
   const deleteCart = () => {
     setCartItems([]);
   };
@@ -96,12 +90,10 @@ export const ShopContextProvider = ({children}) => {
     setButtonPosition,
     addNewItemAndRefreshProducts,
   };
-
   return (
     <ShopContext.Provider value={contextValue}>
       {children}
     </ShopContext.Provider>
   );
 };
-
 export const useShopContext = () => useContext(ShopContext)

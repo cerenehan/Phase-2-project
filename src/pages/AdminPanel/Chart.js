@@ -3,11 +3,9 @@ import { useTheme } from '@mui/material/styles';
 import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer } from 'recharts';
 import Title from './Title';
 
-// Generate Sales Data
 function createData(time, amount) {
   return { time, amount };
 }
-
 const data = [
   createData('00:00', 0),
   createData('03:00', 300),
@@ -22,7 +20,6 @@ const data = [
 
 function Chart() {
   const theme = useTheme();
-
   return (
     <React.Fragment>
       <Title>Today</Title>

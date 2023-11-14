@@ -12,7 +12,6 @@ import AssignmentIcon from '@mui/icons-material/Assignment';
 import CreateIcon from '@mui/icons-material/Create';
 import { Link } from 'react-router-dom';
 
-
 export const mainListItems = (
   <React.Fragment>
     <Link to="/dashboard">
@@ -47,10 +46,6 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Inventory" />
     </ListItemButton>
-
-
-
-
     <Link to="/dashboard/AddNewItem">
       <ListItemButton>
         <ListItemIcon>
@@ -59,8 +54,6 @@ export const mainListItems = (
         <ListItemText primary="Add New Item" />
       </ListItemButton>
     </Link>
-
-
   </React.Fragment>
 );
 
