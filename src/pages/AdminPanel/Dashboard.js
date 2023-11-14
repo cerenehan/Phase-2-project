@@ -130,8 +130,8 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
               <IconButton color="inherit">
                   <NotificationsIcon />
               </IconButton>
-              <IconButton color="inherit">
-                <Brightness4OutlinedIcon onClick={toggleTheme}/>
+              <IconButton color="inherit" onClick={toggleTheme}>
+                <Brightness4OutlinedIcon />
               </IconButton>
           </Toolbar>
         </AppBar>
