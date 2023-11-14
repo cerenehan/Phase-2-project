@@ -12,7 +12,7 @@ export const ShopContextProvider = ({children}) => {
   const [buttonPosition, setButtonPosition] = useState({ top: 0, left: 0 });
 
   
-
+ 
   const fetchProducts = () => {
     fetch("http://localhost:3001/products")
       .then((res) => res.json())

@@ -34,6 +34,9 @@ function Copyright() {
 const steps = ['Shipping address', 'Payment details', 'Review your order'];
 
 export default function ExtraCheckout() {
+  const cardTypes = ["Visa", "MasterCard", "American Express", "China UnionPay"];
+  const randomIndex = Math.floor(Math.random() * cardTypes.length);
+  const randomCardType = cardTypes[randomIndex];
   const [orderPlaced, setOrderPlaced] = useState(false);
   const [activeStep, setActiveStep] = React.useState(0);
   const { cartItems, getTotalCartAmount } = useContext(ShopContext);
@@ -77,7 +80,7 @@ export default function ExtraCheckout() {
       Name: `${addressData.firstName} ${addressData.lastName}`,
       'Ship TO City': addressData.city,
       'Ship to State': addressData.state,
-      'Payment Method': addressData.cardType, 
+      'Payment Method': randomCardType, 
       'Sale Amount': `$${totalAmount}`,
       'Credit Card Number': paymentData.cardNumber,
     };
